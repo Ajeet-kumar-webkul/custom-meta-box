@@ -29,19 +29,28 @@ if ( ! function_exists( 'wkmetabox_includes' ) ) {
 	add_action( 'plugins_loaded', 'wkmetabox_includes' );
 }
 
-
+/**
+ * Add custom meta box.
+ *
+ * @return void
+ */
 function custom_order_meta_box() {
 	add_meta_box(
 		'custom-order-meta-box',
 		__( 'Custom Meta Box', 'webkul' ),
 		'custom_order_meta_box_callback',
 		'shop_order',
-		'advanced',
+		'side',
 		'core'
 	);
 }
-
-// Callback function for custom meta box
+/**
+ * Callback function for custom meta box.
+ *
+ * @param object $post Post object.
+ *
+ * @return void
+ */
 function custom_order_meta_box_callback( $post ) {
 	// Get the saved value
 	$custom_value = get_post_meta( $post->ID, '_custom_value', true );
